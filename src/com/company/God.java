@@ -26,12 +26,12 @@ public class God {
     public static Human createAdam(String name){
         System.out.println(
                 "\n\tBut then God was kinda lonely and needed some company, so he created a Adam.");
-        return new Human(name, Human.Gender.MALE);
+        return (Human) CreatureFactory.createCreature("HumanMale", "Adam");
     }
     public static Human createEve(String name){
         System.out.println("" +
                 "\n\tBut then Adam was kinda sad and lonely so God created a wife for him named Eve.");
-        return new Human(name, Human.Gender.FEMALE);
+        return (Human) CreatureFactory.createCreature("HumanFemale", "Eve");
     }
     public static ArrayList<Commandment> createCommandments(){
         System.out.println("" +
