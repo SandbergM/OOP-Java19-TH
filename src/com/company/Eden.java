@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Eden {
@@ -7,6 +8,8 @@ public class Eden {
     private static final Scanner scanner = new Scanner(System.in);
     private static Human male;
     private static Human female;
+    private ArrayList<Commandment> commandments;
+    private static Snake snake = new Snake("Nachash");
 
     public void visitEden(){
         System.out.println("\n\tThis is the story of how it all came to be...");
@@ -20,6 +23,8 @@ public class Eden {
                 case 1 -> God.createLight();
                 case 2 -> createAdam();
                 case 3 -> createEva();
+                case 4 -> createTheTenCommandments();
+                case 5 -> readCommandments();
             }
         }
     }
@@ -37,5 +42,13 @@ public class Eden {
         female = God.createEve("Eve");
         System.out.printf("\n\t%s has entered the story", female.getName());
         female.sayHello();
+    }
+    public void createTheTenCommandments(){
+        commandments = God.createCommandments();
+    }
+    public void readCommandments(){
+        for(int i = 0 ; i < commandments.size() ; i++){
+            System.out.println("\t" + (i+1) + "  " + commandments.get(i).toString());
+        }
     }
 }

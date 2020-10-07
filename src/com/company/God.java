@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class God {
 
     private God(){};
@@ -23,16 +25,21 @@ public class God {
 
     public static Human createAdam(String name){
         System.out.println(
-                "\n\tThe man called Adam was created when God “formed man of the dust of the ground, " +
-                        "\n\tand breathed into his nostrils the breath of life; and man became a living soul”");
-        return new Human(name);
+                "\n\tBut then God was kinda lonely and needed some company, so he created a Adam.");
+        return new Human(name, Human.Gender.MALE);
     }
     public static Human createEve(String name){
         System.out.println("" +
-                "\n\tOnly God could make a wife for Adam. " +
-                "\n\tGod knew that Adam would need a wife; " +
-                "\n\tGod loved man and did not want him to be alone. " +
-                "\n\tGod created Eve from Adam's rib. with flesh.");
-        return new Human(name);
+                "\n\tBut then Adam was kinda sad and lonely so God created a wife for him named Eve.");
+        return new Human(name, Human.Gender.FEMALE);
+    }
+    public static ArrayList<Commandment> createCommandments(){
+        System.out.println("" +
+                "\n\tAnd then God created some rules and stuff, aka the 10 commandments");
+        ArrayList<Commandment> commandments = new ArrayList<>();
+        for(int i = 0 ; i < 10 ; i++){
+            commandments.add(CommandmentFactory.createCommandment(i));
+        }
+        return commandments;
     }
 }

@@ -1,18 +1,16 @@
 package com.company;
 
-public class Human {
+public class Human extends Creature{
 
-    private final String name;
-
-    public Human(String name){
-        this.name = name;
+    public enum Gender{
+        MALE,
+        FEMALE
     }
 
-    public String getName() {
-        return name;
-    }
+    public Gender gender;
 
-    public void sayHello() {
-        System.out.printf("\n\tHello, my name is %s", this.name);
+    public Human(String name, Gender gender){
+        super(name);
+        this.gender = gender;
     }
 }
