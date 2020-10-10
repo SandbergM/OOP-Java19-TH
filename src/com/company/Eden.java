@@ -17,44 +17,50 @@ public class Eden {
     }
 
     private static final Scanner scanner = new Scanner(System.in);
-    private static Human male;
-    private static Human female;
+    static Human male;
+    static Human female;
+    static Snake snake;
     private ArrayList<Commandment> commandments;
-    private static Snake snake;
 
     public void visitEden(){
-        snake = (Snake) CreatureFactory.createCreature("Snake", "Nachash");
+        snake = (Snake) CreatureFactory.createCreature("Snake", CreatureFactory.CreatureType.SNAKE_MALE);
         System.out.println("\n\tThis is the story of how it all came to be...");
         startTheTour();
     }
+
     private void startTheTour(){
         int step = 0;
         while(step < 10){
             step = nextStep(step);
             switch (step){
-                case 1 -> God.createLight();
+                case 1 -> God.presentYourself();
                 case 2 -> createAdam();
                 case 3 -> createEva();
-                case 4 -> createTheTenCommandments();
-                case 5 -> readCommandments();
+                case 4 -> System.out.println("");
+                case 5 -> createTheTenCommandments();
+                case 6 -> readCommandments();
             }
         }
     }
+
     private int nextStep(int step){
         System.out.println("\n\tPress enter to continue...");
         scanner.nextLine();
         return ++step;
     }
+
     private void createAdam(){
-        male = God.createAdam("Adam");
+        male = (Human) God.createCreature("Adam", CreatureFactory.CreatureType.HUMAN_MALE);
         System.out.printf("\n\t%s has entered the story", male.getName());
         male.sayHello();
     }
+
     private void createEva(){
-        female = God.createEve("Eve");
+        female = (Human) God.createCreature("Eve", CreatureFactory.CreatureType.HUMAN_FEMALE);
         System.out.printf("\n\t%s has entered the story", female.getName());
         female.sayHello();
     }
+
     private void createTheTenCommandments(){
         commandments = God.createCommandments();
     }

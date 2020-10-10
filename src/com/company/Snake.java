@@ -1,7 +1,7 @@
 package com.company;
 
 public class Snake extends Creature {
-    public Snake(String name){
-        super(name);
+    public Snake(String name, Gender gender){
+        super(name, gender);
     }
 }
