@@ -2,12 +2,19 @@ package com.company;
 
 public class CreatureFactory {
 
-    public static Creature createCreature(String type, String name){
-        return switch (type) {
-            case "Snake" ->(new Snake(name));
-            case "HumanMale" ->(new Human(name, Human.Gender.MALE));
-            case "HumanFemale" ->(new Human(name, Human.Gender.FEMALE));
-            default -> throw new IllegalStateException("Unexpected value: " + type);
+    enum CreatureType{
+        SNAKE_FEMALE,
+        SNAKE_MALE,
+        HUMAN_FEMALE,
+        HUMAN_MALE
+    }
+
+    public static Creature createCreature(String name, CreatureType creatureType){
+        return switch (creatureType) {
+            case SNAKE_FEMALE ->(new Snake(name, Creature.Gender.FEMALE));
+            case SNAKE_MALE -> (new Snake(name, Creature.Gender.MALE));
+            case HUMAN_FEMALE ->(new Human(name, Creature.Gender.FEMALE));
+            case HUMAN_MALE ->(new Human(name, Creature.Gender.MALE));
         };
     }
 }

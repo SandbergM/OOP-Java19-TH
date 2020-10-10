@@ -15,7 +15,7 @@ public class God {
         return single_instance;
     }
 
-    public static void createLight(){
+    public static void presentYourself(){
         System.out.println("" +
                 "\n\tIn the beginning God created the heaven and the earth. " +
                 "\n\tAnd the earth was without form, and void; and darkness was upon the face of the deep. " +
@@ -23,16 +23,10 @@ public class God {
                 "\n\tAnd God said, Let there be light: and there was light.");
     }
 
-    public static Human createAdam(String name){
-        System.out.println(
-                "\n\tBut then God was kinda lonely and needed some company, so he created a Adam.");
-        return (Human) CreatureFactory.createCreature("HumanMale", "Adam");
+    public static Creature createCreature(String name, CreatureFactory.CreatureType creatureType){
+        return CreatureFactory.createCreature(name, creatureType);
     }
-    public static Human createEve(String name){
-        System.out.println("" +
-                "\n\tBut then Adam was kinda sad and lonely so God created a wife for him named Eve.");
-        return (Human) CreatureFactory.createCreature("HumanFemale", "Eve");
-    }
+
     public static ArrayList<Commandment> createCommandments(){
         System.out.println("" +
                 "\n\tAnd then God created some rules and stuff, aka the 10 commandments");
