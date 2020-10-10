@@ -17,13 +17,12 @@ public class Eden {
     }
 
     private static final Scanner scanner = new Scanner(System.in);
-    static Human male;
-    static Human female;
-    static Snake snake;
+    static Human adam;
+    static Human eve;
     private ArrayList<Commandment> commandments;
+    private ArrayList<Creature> creaturesOfEden;
 
     public void visitEden(){
-        snake = (Snake) CreatureFactory.createCreature("Snake", CreatureFactory.CreatureType.SNAKE_MALE);
         System.out.println("\n\tThis is the story of how it all came to be...");
         startTheTour();
     }
@@ -36,9 +35,11 @@ public class Eden {
                 case 1 -> God.presentYourself();
                 case 2 -> createAdam();
                 case 3 -> createEva();
-                case 4 -> System.out.println("");
-                case 5 -> createTheTenCommandments();
-                case 6 -> readCommandments();
+                case 4 -> createAnimals();
+                case 5 -> godCreateMoreHumans();
+                case 6 -> checkHumanRelationShips();
+                case 7 -> createTheTenCommandments();
+                case 8 -> readCommandments();
             }
         }
     }
@@ -50,15 +51,43 @@ public class Eden {
     }
 
     private void createAdam(){
-        male = (Human) God.createCreature("Adam", CreatureFactory.CreatureType.HUMAN_MALE);
-        System.out.printf("\n\t%s has entered the story", male.getName());
-        male.sayHello();
+        adam = (Human) God.createCreature("Adam", CreatureFactory.CreatureType.HUMAN_MALE);
+        System.out.printf("\n\t%s has entered the story", adam.getName());
+        adam.sayHello();
     }
 
     private void createEva(){
-        female = (Human) God.createCreature("Eve", CreatureFactory.CreatureType.HUMAN_FEMALE);
-        System.out.printf("\n\t%s has entered the story", female.getName());
-        female.sayHello();
+        eve = (Human) God.createCreature("Eve", CreatureFactory.CreatureType.HUMAN_FEMALE);
+        System.out.printf("\n\t%s has entered the story", eve.getName());
+        eve.sayHello();
+    }
+
+    private void createAnimals(){
+        System.out.println("\n\tAnd then god created some animals and stuff");
+
+        Creature snake1 = (Snake) God.createCreature("Buttercup", CreatureFactory.CreatureType.SNAKE_MALE);
+        Creature snake2 = (Snake) God.createCreature("Minnie", CreatureFactory.CreatureType.SNAKE_FEMALE);
+
+        snake1.addSpouse(snake2);
+        snake2.addSpouse(snake1);
+
+        Creature bird1 = (Bird) God.createCreature("Sunshine", CreatureFactory.CreatureType.BIRD_MALE);
+        Creature bird2 = (Bird) God.createCreature("Kiwi", CreatureFactory.CreatureType.BIRD_FEMALE);
+        bird1.addSpouse(bird2);
+        bird2.addSpouse(bird1);
+    }
+
+    private void godCreateMoreHumans(){
+        Creature child1 = (Human) God.createCreature("Adam jr", CreatureFactory.CreatureType.HUMAN_MALE);
+        Creature child2 = (Human) God.createCreature("Eve jr", CreatureFactory.CreatureType.HUMAN_FEMALE);
+        child1.addParent(eve, adam);
+        child2.addParent(eve, adam);
+        eve.addChild(child1, child2);
+        adam.addChild(child1, child2);
+    }
+
+    public void checkHumanRelationShips(){
+
     }
 
     private void createTheTenCommandments(){

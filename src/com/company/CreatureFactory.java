@@ -6,7 +6,9 @@ public class CreatureFactory {
         SNAKE_FEMALE,
         SNAKE_MALE,
         HUMAN_FEMALE,
-        HUMAN_MALE
+        HUMAN_MALE,
+        BIRD_FEMALE,
+        BIRD_MALE,
     }
 
     public static Creature createCreature(String name, CreatureType creatureType){
@@ -15,6 +17,8 @@ public class CreatureFactory {
             case SNAKE_MALE -> (new Snake(name, Creature.Gender.MALE));
             case HUMAN_FEMALE ->(new Human(name, Creature.Gender.FEMALE));
             case HUMAN_MALE ->(new Human(name, Creature.Gender.MALE));
+            case BIRD_FEMALE ->(new Bird(name, Creature.Gender.FEMALE));
+            case BIRD_MALE ->(new Bird(name, Creature.Gender.MALE));
         };
     }
 }
