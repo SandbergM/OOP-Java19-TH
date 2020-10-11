@@ -24,13 +24,17 @@ public abstract class Creature {
     }
 
     public final void displayHeritage(){
-        //Template - how a family tree are displayed
         System.out.printf("\n\t%ss family tree : ", this.name);
         showSpouse();
         listGrandparents();
         listParents();
         listSiblings();
         System.out.println("\n");
+    }
+
+    public void presentYourself(){
+        sayHello();
+        greeting();
     }
 
     public void addSpouse(Creature creature){
@@ -67,13 +71,13 @@ public abstract class Creature {
         }
     }
 
-    public void listParents(){
+    private void listParents(){
         for(Creature parent: parents){
             System.out.printf("\n\t%s is a child to %s",this.name, parent.getName());
         }
     }
 
-    public void listGrandparents(){
+    private void listGrandparents(){
         for(Creature parent: parents){
             for(Creature grandparent : parent.getParents()){
                 System.out.printf("\n\t%s is a grandchild to %s", this.name, grandparent.getName());
@@ -81,19 +85,19 @@ public abstract class Creature {
         }
     }
 
-    public void showSpouse(){
+    private void showSpouse(){
         if(this.spouse != null){
             System.out.printf("\n\t%s is a spouse to %s", this.spouse.name, this.name);
         }
     }
 
-    public void listChildren(){
+    private void listChildren(){
         for(Creature child: children){
             System.out.printf("\n\t%s is a parent to %s", this.getName(), child.getName());
         }
     }
 
-    public void listSiblings(){
+    private void listSiblings(){
         ArrayList<Creature> siblings = new ArrayList<>();
         for(Creature parent: parents){
             for(Creature sibling : parent.getChildren()){
@@ -110,5 +114,7 @@ public abstract class Creature {
     public Creature getSpouse() {return spouse;}
     public ArrayList<Creature> getParents() {return parents;}
     public ArrayList<Creature> getChildren() {return children;}
+
     public abstract void sayHello();
+    public abstract void greeting();
 }

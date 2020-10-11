@@ -19,7 +19,7 @@ public class Eden {
 
     private static final Scanner scanner = new Scanner(System.in);
     private final ArrayList<Creature> creaturesOfEden = new ArrayList<>();
-    // Adam and eve are 
+    // Adam and eve are the main characters of the story, so for easy access in the story
     static Human adam;
     static Human eve;
 
@@ -57,7 +57,7 @@ public class Eden {
         System.out.print("\n\tGod was feeling kinda lonely so he created a friend");
         adam = (Human) God.createCreature("Adam", CreatureFactory.CreatureType.HUMAN_MALE);
         System.out.printf("\n\t%s has entered the story", adam.getName());
-        adam.sayHello();
+        adam.greeting();
     }
 
     private void createEva(){
@@ -65,7 +65,7 @@ public class Eden {
         System.out.printf("\n\tBut then %s was feeling kinda lonely so he gave him a wife", adam.getName());
         eve = (Human) God.createCreature("Eve", CreatureFactory.CreatureType.HUMAN_FEMALE);
         System.out.printf("\n\t%s has entered the story", eve.getName());
-        eve.sayHello();
+        eve.greeting();
 
         adam.addSpouse(eve);
         eve.addSpouse(adam);
@@ -89,11 +89,15 @@ public class Eden {
         Creature snake1 = (Snake) God.createCreature("Buttercup", CreatureFactory.CreatureType.SNAKE_MALE);
         Creature snake2 = (Snake) God.createCreature("Minnie", CreatureFactory.CreatureType.SNAKE_FEMALE);
 
+        snake1.greeting();
+        snake2.greeting();
         snake1.addSpouse(snake2);
         snake2.addSpouse(snake1);
 
         Creature bird1 = (Bird) God.createCreature("Sunshine", CreatureFactory.CreatureType.BIRD_MALE);
         Creature bird2 = (Bird) God.createCreature("Kiwi", CreatureFactory.CreatureType.BIRD_FEMALE);
+        bird1.greeting();
+        bird2.greeting();
         bird1.addSpouse(bird2);
         bird2.addSpouse(bird1);
 
@@ -107,24 +111,25 @@ public class Eden {
         Creature child1 = (Human) God.createCreature("Adam jr", CreatureFactory.CreatureType.HUMAN_MALE);
         Creature child2 = (Human) God.createCreature("Eve jr", CreatureFactory.CreatureType.HUMAN_FEMALE);
 
+        child1.greeting();
+        child2.greeting();
+
         child1.addParent(eve, adam);
         child2.addParent(eve, adam);
 
         eve.addChild(child1, child2);
         adam.addChild(child1, child2);
 
-        eve.listChildren();
-        adam.listChildren();
-        pushToCreaturesOfEden(child1,child2);
+        pushToCreaturesOfEden(child1,child2, adam, eve);
     }
 
-    public void meetTheCreaturesOfEden(){
+    private void meetTheCreaturesOfEden(){
         for(Creature creature : creaturesOfEden){
             creature.displayHeritage();
         }
     }
 
-    public void eveStoleSomeApples(){
+    private void eveStoleSomeApples(){
         TreeOfLife.getInstance().takeApple();
         System.out.println("" +
                 "\n\tSomewhere in this story, i think Eve was tricked into stealing some apples" +

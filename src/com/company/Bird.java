@@ -7,6 +7,11 @@ public class Bird extends Creature {
 
     @Override
     public void sayHello() {
-        System.out.printf("%s chirps, chirp-chirp", this.getName());
+        System.out.printf("\n\t%s chirps, chirp-chirp", this.getName());
+    }
+
+    @Override
+    public void greeting() {
+        System.out.printf("\n\t%s flaps their wings to greet you", this.getName());
     }
 }

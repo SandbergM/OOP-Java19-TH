@@ -7,7 +7,11 @@ public class Snake extends Creature {
 
     @Override
     public void sayHello() {
-        System.out.printf("%s hisses, sssssss", this.getName());
+        System.out.printf("\n\t%s hisses, sssssss", this.getName());
     }
 
+    @Override
+    public void greeting() {
+        System.out.printf("\n\t%s slithers in a friendly manor greet you", this.getName());
+    }
 }
