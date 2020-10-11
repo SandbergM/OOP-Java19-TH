@@ -1,11 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public abstract class Creature {
 
-    private final Creature[] spouse = new Creature[1];
+    private Creature spouse;
     private final ArrayList<Creature> parents = new ArrayList<>();
     private final ArrayList<Creature> children= new ArrayList<>();
 
@@ -25,15 +24,17 @@ public abstract class Creature {
     }
 
     public final void displayHeritage(){
+        System.out.printf("\n\t%ss family tree : ", this.name);
+        showSpouse();
         listGrandparents();
         listParents();
         listSiblings();
-        System.out.println("\n\n\n");
+        System.out.println("\n");
     }
 
     public void addSpouse(Creature creature){
-        if(spouse[0] == null){
-            spouse[0] = creature;
+        if(spouse == null){
+            spouse = creature;
 
             System.out.printf("\n\t%s the %s is now a spouse to %s the %s",
                     creature.getName(),
@@ -76,6 +77,12 @@ public abstract class Creature {
         }
     }
 
+    public void showSpouse(){
+        if(this.spouse != null){
+            System.out.printf("\n\t%s is a spouse to %s", this.spouse.name, this.name);
+        }
+    }
+
     public void listChildren(){
         for(Creature child: children){
             System.out.printf("\n\t%s is a parent to %s", this.getName(), child.getName());
@@ -96,7 +103,7 @@ public abstract class Creature {
         }
     }
 
-    public Creature getSpouse() {return spouse[0];}
+    public Creature getSpouse() {return spouse;}
     public ArrayList<Creature> getParents() {return parents;}
     public ArrayList<Creature> getChildren() {return children;}
     public abstract void sayHello();
