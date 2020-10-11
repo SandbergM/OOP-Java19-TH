@@ -29,8 +29,7 @@ public class Eden {
 
     private void startTheTour(){
         int step = 0;
-        while(step < 10){
-            step = nextStep(step);
+        while(step < 9){
             switch (step){
                 case 1 -> God.presentYourself();
                 case 2 -> createAdam();
@@ -41,6 +40,7 @@ public class Eden {
                 case 7 -> readCommandments();
                 case 8 -> eveStoleSomeApples();
             }
+            step = nextStep(step);
         }
     }
 
