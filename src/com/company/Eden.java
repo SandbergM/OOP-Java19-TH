@@ -19,6 +19,7 @@ public class Eden {
 
     private static final Scanner scanner = new Scanner(System.in);
     private final ArrayList<Creature> creaturesOfEden = new ArrayList<>();
+    // Adam and eve are 
     static Human adam;
     static Human eve;
 
@@ -45,12 +46,14 @@ public class Eden {
     }
 
     private int nextStep(int step){
+        // Scanner with pause for a more "friendly" user experience
         System.out.println("\n\tPress enter to continue...");
         scanner.nextLine();
         return ++step;
     }
 
     private void createAdam(){
+        // Since this a "story mode" application, all of the Creatures are hardcoded
         System.out.print("\n\tGod was feeling kinda lonely so he created a friend");
         adam = (Human) God.createCreature("Adam", CreatureFactory.CreatureType.HUMAN_MALE);
         System.out.printf("\n\t%s has entered the story", adam.getName());
@@ -58,6 +61,7 @@ public class Eden {
     }
 
     private void createEva(){
+        // Since this a "story mode" application, all of the Creatures are hardcoded
         System.out.printf("\n\tBut then %s was feeling kinda lonely so he gave him a wife", adam.getName());
         eve = (Human) God.createCreature("Eve", CreatureFactory.CreatureType.HUMAN_FEMALE);
         System.out.printf("\n\t%s has entered the story", eve.getName());
@@ -79,6 +83,7 @@ public class Eden {
     }
 
     private void createAnimals(){
+        // Since this a "story mode" application, all of the Creatures are hardcoded
         System.out.println("\n\tAnd then god created some animals and stuff");
 
         Creature snake1 = (Snake) God.createCreature("Buttercup", CreatureFactory.CreatureType.SNAKE_MALE);
@@ -96,7 +101,7 @@ public class Eden {
     }
 
     private void godCreateMoreHumans(){
-
+        // Since this a "story mode" application, all of the Creatures are hardcoded
         System.out.println("\n\tAdam and Eve were getting kinda old, so God decided to give them some children");
 
         Creature child1 = (Human) God.createCreature("Adam jr", CreatureFactory.CreatureType.HUMAN_MALE);

@@ -24,6 +24,7 @@ public abstract class Creature {
     }
 
     public final void displayHeritage(){
+        //Template - how a family tree are displayed
         System.out.printf("\n\t%ss family tree : ", this.name);
         showSpouse();
         listGrandparents();
@@ -33,6 +34,7 @@ public abstract class Creature {
     }
 
     public void addSpouse(Creature creature){
+        // Check if the creature already has a spouse, only one allowed per creature
         if(spouse == null){
             spouse = creature;
 
@@ -49,6 +51,7 @@ public abstract class Creature {
 
     public void addParent(Creature... parents){
         for(Creature parent : parents){
+            // Check if the parent already is in parents, no duplicates allowed
             if(!this.parents.contains(parent)){
                 this.parents.add(parent);
             }
@@ -57,6 +60,7 @@ public abstract class Creature {
 
     public void addChild(Creature... children){
         for(Creature child : children){
+            // Check if the child already is in children, no duplicates allowed
             if(!this.children.contains(child)){
                 this.children.add(child);
             }
